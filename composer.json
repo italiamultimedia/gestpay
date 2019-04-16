@@ -16,7 +16,8 @@
     ],
     "require" : {
         "php" : "^5.4 || ^7.0",
-        "webservco/framework" : "@dev"
+        "webservco/framework" : "@dev",
+        "webservco/api" : "@dev"
     },
     "require-dev" : {
         "phpunit/phpunit" : "~4|~5"
