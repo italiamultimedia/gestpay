@@ -15,9 +15,9 @@ composer require italiamultimedia/gestpay
 
 ### Payment API
 
-#### `\ItaliaMultimedia\GestPay\Payment`
+`\ItaliaMultimedia\GestPay\Payment`
 
-##### Create Payment
+#### Create Payment
 
 ```php
 $payment = new \ItaliaMultimedia\GestPay\Payment($apiKey, $logDir);
@@ -31,7 +31,9 @@ $payment->setShopLogin($shopLogin);
 $result = $payment->create($amount, $shopTransactionId);
 ```
 
-###### Example: [examples/paymentCreate.php](/examples/paymentCreate.php)
+##### Example
+
+[examples/paymentCreate.php](/examples/paymentCreate.php)
 
 ```sh
 php examples/paymentCreate.php
