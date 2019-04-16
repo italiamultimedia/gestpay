@@ -16,9 +16,10 @@ final class Payment extends AbstractGestPay
             [], // headers
             [
                 'shopLogin' => $this->shopLogin,
+                'shopTransactionID' => $shopTransactionId,
+                '3ds20Container' => [],
                 'amount' => floatval($amount),
                 'currency' => $this->currency,
-                'shopTransactionID' => $shopTransactionId,
             ]
         );
     }
