@@ -14,8 +14,8 @@
         <testsuite name="Test">
             <directory suffix="Test.php">./tests/unit/ItaliaMultimedia/Test</directory>
         </testsuite>
-        <testsuite name="Api">
-            <directory suffix="Test.php">./tests/unit/ItaliaMultimedia/Api</directory>
+        <testsuite name="GestPay">
+            <directory suffix="Test.php">./tests/unit/ItaliaMultimedia/GestPay</directory>
         </testsuite>
     </testsuites>
 </phpunit>
