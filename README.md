@@ -35,7 +35,7 @@ $result = $payment->create($amount, $shopTransactionId);
 
 ##### Example
 
-[examples/paymentCreate.php](/examples/paymentCreate.php)
+Set `$shopLogin` and `$apiKey` in [examples/paymentCreate.php](/examples/paymentCreate.php)
 
 ```sh
 php examples/paymentCreate.php
