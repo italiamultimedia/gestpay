@@ -8,8 +8,8 @@ require $projectPath . 'vendor/autoload.php';
 /* General settings */
 
 $logDir = sprintf('%svar/tmp/', $projectPath);
-$apiKey = 'R0VTUEFZNzM3NTgjI0VzZXJjZW50ZSBUZXN0IGRpIEJBUkJJRVJJIyMxNi8wNC8yMDE5IDEwOjQ0OjQx';
-$shopLogin = 'GESPAY73758';
+$apiKey = '';
+$shopLogin = '';
 
 /* Payment settings */
 
