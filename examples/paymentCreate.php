@@ -37,5 +37,7 @@ try {
     $result = $payment->create($amount, $shopTransactionId);
     $logger->debug('Result:', $result);
 } catch (\ItaliaMultimedia\GestPay\Exceptions\GestPayException $e) {
-    $logger->error(Ansi::sgr(sprintf('Error: %s: %s', $e->getCode(), $e->getMessage()), [Sgr::RED]));
+    $logger->error(Ansi::sgr(sprintf('GestPay Exception: %s: %s', $e->getCode(), $e->getMessage()), [Sgr::RED]));
+} catch (\Exception $e) {
+    $logger->error(Ansi::sgr(sprintf('Exception: %s: %s', $e->getCode(), $e->getMessage()), [Sgr::RED]));
 }
