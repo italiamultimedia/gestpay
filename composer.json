@@ -37,14 +37,14 @@
         "test" : "vendor/bin/phpunit --colors=always",
         "test:d" : "vendor/bin/phpunit --testdox",
         "check:structure" : "pds-skeleton validate .",
-        "check" : "phpcs --standard=PSR2 --extensions=php src tests",
-        "s:1": "phpstan analyse src tests --level=1 --ansi -c phpstan.neon",
-        "s:2": "phpstan analyse src tests --level=2 --ansi -c phpstan.neon",
-        "s:3": "phpstan analyse src tests --level=3 --ansi -c phpstan.neon",
-        "s:4": "phpstan analyse src tests --level=4 --ansi -c phpstan.neon",
-        "s:5": "phpstan analyse src tests --level=5 --ansi -c phpstan.neon",
-        "s:6": "phpstan analyse src tests --level=6 --ansi -c phpstan.neon",
-        "s:7": "phpstan analyse src tests --level=7 --ansi -c phpstan.neon",
+        "check" : "phpcs --standard=PSR2 --extensions=php examples src tests",
+        "s:1": "phpstan analyse examples src tests --level=1 --ansi -c phpstan.neon",
+        "s:2": "phpstan analyse examples src tests --level=2 --ansi -c phpstan.neon",
+        "s:3": "phpstan analyse examples src tests --level=3 --ansi -c phpstan.neon",
+        "s:4": "phpstan analyse examples src tests --level=4 --ansi -c phpstan.neon",
+        "s:5": "phpstan analyse examples src tests --level=5 --ansi -c phpstan.neon",
+        "s:6": "phpstan analyse examples src tests --level=6 --ansi -c phpstan.neon",
+        "s:7": "phpstan analyse examples src tests --level=7 --ansi -c phpstan.neon",
         "all": "clear && composer s:7 && composer check && composer test"
     }
 }
