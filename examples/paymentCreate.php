@@ -31,6 +31,8 @@ try {
     $payment->setCurrency(\ItaliaMultimedia\GestPay\Currencies::EUR);
     // Set shopLogin
     $payment->setShopLogin($shopLogin);
+    // Set itemType (digital/physical)
+    $payment->setItemType('digital');
     // Create payment
     $result = $payment->create($amount, $shopTransactionId);
     $logger->debug('Result:', $result);

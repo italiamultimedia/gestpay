@@ -5,6 +5,8 @@ use WebServCo\Framework\Http\Method;
 
 final class Payment extends AbstractGestPay
 {
+    protected $itemType;
+
     public function create($amount, $shopTransactionId)
     {
         if (empty($this->shopLogin)) {
@@ -17,10 +19,15 @@ final class Payment extends AbstractGestPay
             [
                 'shopLogin' => $this->shopLogin,
                 'shopTransactionID' => $shopTransactionId,
-                '3ds20Container' => [],
+                'itemType' => $this->itemType,
                 'amount' => floatval($amount),
                 'currency' => $this->currency,
             ]
         );
+    }
+
+    public function setItemType($itemType)
+    {
+        $this->itemType = $itemType;
     }
 }
