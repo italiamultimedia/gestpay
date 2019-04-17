@@ -35,10 +35,10 @@ $result = $payment->create($amount, $shopTransactionId);
 
 ##### Example
 
-Set `$shopLogin` and `$apiKey` in [examples/paymentCreate.php](/examples/paymentCreate.php)
+[examples/paymentCreate.php](/examples/paymentCreate.php)
 
 ```sh
-php examples/paymentCreate.php
+php examples/paymentCreate.php <apiKey> <shopLogin>
 ```
 
 ---

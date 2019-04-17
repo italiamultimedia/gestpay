@@ -6,10 +6,9 @@ $projectPath = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 require $projectPath . 'vendor/autoload.php';
 
 /* General settings */
-
+$apiKey = isset($argv[1]) ? $argv[1] : null;
+$shopLogin = isset($argv[2]) ? $argv[2] : null;
 $logDir = sprintf('%svar/tmp/', $projectPath);
-$apiKey = '';
-$shopLogin = '';
 
 /* Payment settings */
 
