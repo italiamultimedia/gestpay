@@ -42,3 +42,9 @@ php examples/paymentCreate.php <apiKey> <shopLogin>
 ```
 
 ---
+
+## Lightbox example
+
+[examples/lightbox.php](/examples/lightbox.php)
+
+> See Gestpay documentation: [Using Lightbox solution](https://docs.gestpay.it/rest/getting-started/getting-started/#using-lightbox-solution)
