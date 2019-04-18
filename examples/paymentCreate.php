@@ -32,8 +32,12 @@ try {
     $payment->setShopLogin($shopLogin);
     // Set itemType (digital/physical)
     $payment->setItemType('digital');
+    // Set optional data
+    $extraData = [
+        'languageId' => 2,
+    ];
     // Create payment
-    $result = $payment->create($amount, $shopTransactionId);
+    $result = $payment->create($amount, $shopTransactionId, $extraData);
     $logger->debug('Result:', $result);
 } catch (\ItaliaMultimedia\GestPay\Exceptions\GestPayException $e) {
     $logger->error(Ansi::sgr(sprintf('GestPay Exception: %s: %s', $e->getCode(), $e->getMessage()), [Sgr::RED]));

@@ -7,23 +7,22 @@ final class Payment extends AbstractGestPay
 {
     protected $itemType;
 
-    public function create($amount, $shopTransactionId)
+    public function create($amount, $shopTransactionId, $extraData = [])
     {
         if (empty($this->shopLogin)) {
             throw new \InvalidArgumentException('Missing shopLogin');
         }
-        return $this->call(
-            'payment/create',
-            Method::POST,
-            [], // headers
+        $data = array_merge(
             [
                 'shopLogin' => $this->shopLogin,
                 'shopTransactionID' => $shopTransactionId,
                 'itemType' => $this->itemType,
                 'amount' => floatval($amount),
                 'currency' => $this->currency,
-            ]
+            ],
+            $extraData
         );
+        return $this->call('payment/create', Method::POST, [], $data);
     }
 
     public function setItemType($itemType)
