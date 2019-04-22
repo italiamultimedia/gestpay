@@ -13,7 +13,7 @@ $axerveScriptUrl = sprintf(
     'https://%s/pagam/javascript/axerve.js',
     Environment::SANDBOX == $environment ? 'sandbox.gestpay.net' : 'ecomm.sella.it'
 );
-$paymentID = isset($_GET['paymentID']) ? $_GET['paymentID'] : null;
+$paymentId = isset($_GET['paymentId']) ? $_GET['paymentId'] : null;
 $paymentToken = isset($_GET['paymentToken']) ? $_GET['paymentToken'] : null;
 ?>
 <!doctype html>
@@ -24,7 +24,7 @@ $paymentToken = isset($_GET['paymentToken']) ? $_GET['paymentToken'] : null;
         <title>Gestpay</title>
     </head>
     <body>
-        <?php if (!empty($paymentID) && !empty($paymentToken)) { ?>
+        <?php if (!empty($paymentId) && !empty($paymentToken)) { ?>
             <script src="<?=$axerveScriptUrl?>"></script>
             <script>
                 <?php if (Environment::SANDBOX == $environment) { ?>
@@ -32,7 +32,7 @@ $paymentToken = isset($_GET['paymentToken']) ? $_GET['paymentToken'] : null;
                 <?php } ?>
                 axerve.lightBox.shop = '<?=$shopLogin?>';
                 axerve.lightBox.open(
-                    '<?=$paymentID?>',
+                    '<?=$paymentId?>',
                     '<?=$paymentToken?>',
                     function (response) {
                         console.log('axerve callback response:'); //XXX
