@@ -1,6 +1,13 @@
 # italiamultimedia/gestpay
 
-GestPay REST API Implementation
+GestPay REST API Implementation.
+
+## Notes
+* Supports only `apiKey` Authorization
+
+## Implemented endpoints
+* `payment/create`
+* `payment/detail`
 
 ---
 ## Installation
@@ -17,8 +24,7 @@ composer require italiamultimedia/gestpay
 
 `\ItaliaMultimedia\GestPay\Payment`
 
-#### Create Payment
-
+General payment class initialization
 ```php
 $payment = new \ItaliaMultimedia\GestPay\Payment($apiKey, $logDir);
 // Set environment (optional, defaults to 'Environment::SANDBOX')
@@ -27,10 +33,21 @@ $payment->setEnvironment(\ItaliaMultimedia\GestPay\Environment::SANDBOX);
 $payment->setCurrency(\ItaliaMultimedia\GestPay\Currencies::EUR);
 // Set shopLogin
 $payment->setShopLogin($shopLogin);
+```
+
+#### POST `payment/create`
+
+> https://api.gestpay.it/#post-payment-create
+
+```php
 // Set itemType (digital/physical)
 $payment->setItemType('digital');
+// Set optional data
+$extraData = [
+    'languageId' => 2,
+];
 // Create payment
-$result = $payment->create($amount, $shopTransactionId);
+$result = $payment->create($amount, $shopTransactionId, $extraData);
 ```
 
 ##### Example
@@ -39,6 +56,27 @@ $result = $payment->create($amount, $shopTransactionId);
 
 ```sh
 php examples/paymentCreate.php <apiKey> <shopLogin>
+```
+
+#### `POST` `payment/detail`
+
+> https://api.gestpay.it/#post-payment-detail
+
+```php
+// Set optional data (you must provide at least one of `shopTransactionID`, `bankTransactionID`, `paymentID`.)
+$extraData = [
+    'paymentID' => $paymentId,
+];
+// Get payment detail
+$result = $payment->detail($extraData);
+```
+
+##### Example
+
+[examples/paymentDetail.php](/examples/paymentDetail.php)
+
+```sh
+php examples/paymentDetail.php <apiKey> <shopLogin> <paymentId>
 ```
 
 ---

@@ -9,9 +9,7 @@ final class Payment extends AbstractGestPay
 
     public function create($amount, $shopTransactionId, $extraData = [])
     {
-        if (empty($this->shopLogin)) {
-            throw new \InvalidArgumentException('Missing shopLogin');
-        }
+        $this->validatePayment();
         $data = array_merge(
             [
                 'shopLogin' => $this->shopLogin,
@@ -25,8 +23,28 @@ final class Payment extends AbstractGestPay
         return $this->call('payment/create', Method::POST, [], $data);
     }
 
+    public function detail($extraData = [])
+    {
+        $this->validatePayment();
+        $data = array_merge(
+            [
+                'shopLogin' => $this->shopLogin,
+            ],
+            $extraData
+        );
+        return $this->call('payment/detail', Method::POST, [], $data);
+    }
+
     public function setItemType($itemType)
     {
         $this->itemType = $itemType;
+    }
+
+    protected function validatePayment()
+    {
+        if (empty($this->shopLogin)) {
+            throw new \InvalidArgumentException('Missing shopLogin');
+        }
+        return true;
     }
 }
