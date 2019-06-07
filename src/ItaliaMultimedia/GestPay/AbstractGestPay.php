@@ -10,6 +10,7 @@ abstract class AbstractGestPay
     protected $httpBrowserInterface;
     protected $currency;
     protected $environment;
+    protected $paymentToken;
     protected $shopLogin;
     protected $url;
 
@@ -39,6 +40,11 @@ abstract class AbstractGestPay
         $this->environment = $environment;
     }
 
+    public function setPaymentToken($paymentToken)
+    {
+        $this->paymentToken = $paymentToken;
+    }
+
     public function setShopLogin($shopLogin)
     {
         $this->shopLogin = $shopLogin;
@@ -66,7 +72,11 @@ abstract class AbstractGestPay
         }
         $this->httpBrowserInterface->setMethod($method);
 
-        $this->setAuthorizationHeader();
+        if ($this->paymentToken) {
+            $this->setPaymentTokenHeader();
+        } else {
+            $this->setAuthorizationHeader();
+        }
 
         if (is_array($headers)) {
             foreach ($headers as $key => $value) {
@@ -109,6 +119,11 @@ abstract class AbstractGestPay
     protected function setAuthorizationHeader()
     {
         $this->httpBrowserInterface->setRequestHeader('Authorization', sprintf('apikey %s', $this->apiKey));
+    }
+
+    protected function setPaymentTokenHeader()
+    {
+        $this->httpBrowserInterface->setRequestHeader('paymentToken', $this->paymentToken);
     }
 
     protected function validate($apiKey, $logDir)

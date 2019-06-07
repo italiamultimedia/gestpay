@@ -62,6 +62,11 @@ php examples/paymentCreate.php <apiKey> <shopLogin>
 
 > https://api.gestpay.it/#post-payment-detail
 
+Optionally, authenticate using `paymentToken` instead of `Authorization`:
+```php
+$payment->setPaymentToken($paymentToken);
+```
+
 ```php
 // Set optional data (you must provide at least one of `shopTransactionID`, `bankTransactionID`, `paymentID`.)
 $extraData = [
@@ -78,7 +83,6 @@ $result = $payment->detail($extraData);
 ```sh
 php examples/paymentDetail.php <apiKey> <shopLogin> <paymentId>
 ```
-
 ---
 
 ## Lightbox example
