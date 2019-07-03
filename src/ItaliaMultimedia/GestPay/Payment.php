@@ -12,15 +12,15 @@ final class Payment extends AbstractGestPay
         $this->validatePayment();
         $data = array_merge(
             [
-                'shopLogin' => $this->shopLogin,
-                'shopTransactionID' => $shopTransactionId,
-                'itemType' => $this->itemType,
-                'amount' => $amount,
-                'currency' => $this->currency,
+                'shopLogin' => (string) $this->shopLogin,
+                'shopTransactionID' => (string) $shopTransactionId,
+                'itemType' => (string) $this->itemType,
+                'amount' => (string) $amount,
+                'currency' => (string) $this->currency,
             ],
             $extraData
         );
-        return $this->call('payment/create', Method::POST, [], $data);
+        return $this->call('payment/create', Method::POST, [], $this->parseData($data));
     }
 
     public function detail($extraData = [])
@@ -32,12 +32,21 @@ final class Payment extends AbstractGestPay
             ],
             $extraData
         );
-        return $this->call('payment/detail', Method::POST, [], $data);
+        return $this->call('payment/detail', Method::POST, [], $this->parseData($data));
     }
 
     public function setItemType($itemType)
     {
         $this->itemType = $itemType;
+    }
+
+    protected function parseData($data = [])
+    {
+        $parsedData = [];
+        foreach ($data as $key => $value) {
+            $parsedData[$key] = (string) $value;
+        }
+        return $parsedData;
     }
 
     protected function validatePayment()
