@@ -15,7 +15,7 @@ final class Payment extends AbstractGestPay
                 'shopLogin' => $this->shopLogin,
                 'shopTransactionID' => $shopTransactionId,
                 'itemType' => $this->itemType,
-                'amount' => floatval($amount),
+                'amount' => $amount,
                 'currency' => $this->currency,
             ],
             $extraData
