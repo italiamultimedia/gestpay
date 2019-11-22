@@ -59,7 +59,6 @@ final class Payment extends AbstractGestPay
 
     public function submit($paymentToken, $bodyExtraData = [])
     {
-        noExist();
         $headers = [
             'paymentToken' => $paymentToken,
             'Content-Type' => 'application/json'
@@ -78,7 +77,7 @@ final class Payment extends AbstractGestPay
                         'expMonth' => '05',
                         'expYear' => '27',
                         'CVV' => '444',
-                        'DCC' => NULL
+                        'DCC' => null
                     ]
                 ]
             ],
