@@ -56,4 +56,34 @@ final class Payment extends AbstractGestPay
         }
         return true;
     }
+
+    public function submit($paymentToken, $bodyExtraData = [])
+    {
+        noExist();
+        $headers = [
+            'paymentToken' => $paymentToken,
+            'Content-Type' => 'application/json'
+        ];
+
+        $data = array_merge(
+            [
+                'buyer' => [
+                    'email' => 'test@test.com',
+                    'name' => '123123'
+                ],
+                'shopLogin' => (string) $this->shopLogin,
+                'paymentTypeDetails' => [
+                    'creditcard' => [
+                        'number' => '4012001037141112',
+                        'expMonth' => '05',
+                        'expYear' => '27',
+                        'CVV' => '444',
+                        'DCC' => NULL
+                    ]
+                ]
+            ],
+            $bodyExtraData
+        );
+        return $this->call('payment/submit', Method::POST, $headers, $data);
+    }
 }
