@@ -66,20 +66,7 @@ final class Payment extends AbstractGestPay
 
         $data = array_merge(
             [
-                'buyer' => [
-                    'email' => 'test@test.com',
-                    'name' => '123123'
-                ],
                 'shopLogin' => (string) $this->shopLogin,
-                'paymentTypeDetails' => [
-                    'creditcard' => [
-                        'number' => '4012001037141112',
-                        'expMonth' => '05',
-                        'expYear' => '27',
-                        'CVV' => '444',
-                        'DCC' => null
-                    ]
-                ]
             ],
             $bodyExtraData
         );
