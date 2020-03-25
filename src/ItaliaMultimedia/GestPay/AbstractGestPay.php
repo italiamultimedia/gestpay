@@ -86,7 +86,7 @@ abstract class AbstractGestPay
 
         $response = $this->httpBrowserInterface->retrieve($url); // \WebServCo\Framework\Http\Response
 
-        $apiResponse = new ApiResponse($endpoint, $method, $response); // \WebServCo\DiscogsApi\ApiResponse
+        $apiResponse = new ApiResponse($endpoint, $method, $response);
 
         $status = $apiResponse->getStatus();
         $data = $apiResponse->getData();
