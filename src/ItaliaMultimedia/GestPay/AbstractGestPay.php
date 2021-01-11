@@ -68,7 +68,6 @@ abstract class AbstractGestPay
                 break;
             default:
                 throw new GestPayException('Method not implemented.');
-                break;
         }
         $this->httpBrowserInterface->setMethod($method);
 
@@ -106,13 +105,10 @@ abstract class AbstractGestPay
         switch ($this->environment) {
             case Environment::PRODUCTION:
                 return Url::PRODUCTION;
-                break;
             case Environment::SANDBOX:
                 return Url::SANDBOX;
-                break;
             default:
                 throw new \InvalidArgumentException(sprintf('Invalid environment: %s', $this->environment));
-                break;
         }
     }
 
