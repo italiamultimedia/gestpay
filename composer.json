@@ -45,6 +45,6 @@
         "s:5": "phpstan analyse examples src tests --level=5 --ansi -c phpstan.neon",
         "s:6": "phpstan analyse examples src tests --level=6 --ansi -c phpstan.neon",
         "s:7": "phpstan analyse examples src tests --level=7 --ansi -c phpstan.neon",
-        "all": "clear && composer s:5 && composer check && composer test"
+        "all": "composer s:5 && composer check && composer test"
     }
 }
