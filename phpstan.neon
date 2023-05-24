@@ -1,3 +1,0 @@
-parameters:
-	autoload_files:
-		- %currentWorkingDirectory%/vendor/webservco/framework/src/WebServCo/Framework/Helpers/I18nHelper.php
