@@ -44,7 +44,11 @@ final class Payment extends AbstractGestPay
     {
         $parsedData = [];
         foreach ($data as $key => $value) {
-            $parsedData[$key] = (string) $value;
+            if (is_array($value)) {
+                $parsedData[$key] = $this->parseData($value);
+            } else {
+                $parsedData[$key] = (string) $value;
+            }
         }
         return $parsedData;
     }
