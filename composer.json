@@ -20,6 +20,8 @@
         "webservco/api" : "^1"
     },
     "require-dev" : {
+        "squizlabs/php_codesniffer" : "^3",
+        "phpstan/phpstan" : "^1",
         "phpunit/phpunit" : "~5"
     },
     "suggest" : {
@@ -36,15 +38,15 @@
     "scripts" : {
         "test" : "vendor/bin/phpunit --colors=always",
         "test:d" : "vendor/bin/phpunit --testdox",
-        "check:structure" : "pds-skeleton validate .",
-        "check" : "phpcs --standard=PSR2 --extensions=php examples src tests",
-        "s:1": "phpstan analyse examples src tests --level=1 --ansi -c phpstan.neon",
-        "s:2": "phpstan analyse examples src tests --level=2 --ansi -c phpstan.neon",
-        "s:3": "phpstan analyse examples src tests --level=3 --ansi -c phpstan.neon",
-        "s:4": "phpstan analyse examples src tests --level=4 --ansi -c phpstan.neon",
-        "s:5": "phpstan analyse examples src tests --level=5 --ansi -c phpstan.neon",
-        "s:6": "phpstan analyse examples src tests --level=6 --ansi -c phpstan.neon",
-        "s:7": "phpstan analyse examples src tests --level=7 --ansi -c phpstan.neon",
+        "check:structure" : "vendor/bin/pds-skeleton validate .",
+        "check" : "vendor/bin/phpcs --standard=PSR12 --extensions=php examples src tests",
+        "s:1": "vendor/bin/phpstan analyse examples src tests --level=1 --ansi -c phpstan.neon",
+        "s:2": "vendor/bin/phpstan analyse examples src tests --level=2 --ansi -c phpstan.neon",
+        "s:3": "vendor/bin/phpstan analyse examples src tests --level=3 --ansi -c phpstan.neon",
+        "s:4": "vendor/bin/phpstan analyse examples src tests --level=4 --ansi -c phpstan.neon",
+        "s:5": "vendor/bin/phpstan analyse examples src tests --level=5 --ansi -c phpstan.neon",
+        "s:6": "vendor/bin/phpstan analyse examples src tests --level=6 --ansi -c phpstan.neon",
+        "s:7": "vendor/bin/phpstan analyse examples src tests --level=7 --ansi -c phpstan.neon",
         "all": "composer s:5 && composer check && composer test"
     }
 }
