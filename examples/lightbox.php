@@ -6,7 +6,7 @@ use ItaliaMultimedia\GestPay\Environment;
 
 /* Edit */
 
-$environment = '';
+$environment = Environment::SANDBOX;
 $shopLogin = '';
 
 $axerveScriptUrl = sprintf(
