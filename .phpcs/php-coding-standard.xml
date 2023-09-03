@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset name="WebServCo-CodingStandard-PHP82">
+	<description>Custom, opinionated coding standards based on PSR12, SlevomatCodingStandard, and PHPCompatibility.</description>
+    <rule ref="vendor/webservco/coding-standards/phpcs/ruleset-psr-php82-slevomat.xml">
+    </rule>
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+        <properties>
+			<property name="rootNamespaces" type="array">
+				<element key="src/ItaliaMultimedia" value="ItaliaMultimedia" />
+                <element key="tests/Unit" value="Tests\Unit" />
+			</property>
+		</properties>
+	</rule>
+</ruleset>

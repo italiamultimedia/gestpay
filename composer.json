@@ -1,52 +1,59 @@
 {
-    "name" : "italiamultimedia/gestpay",
-    "type" : "library",
-    "description" : "GestPay REST API Implementation",
-    "keywords" : [
-        "italiamultimedia",
-        "gestpay"
-    ],
-    "homepage" : "https://projects.italiamultimedia.com/italiamultimedia/gestpay",
-    "license" : "MIT",
     "authors" : [
         {
             "name" : "Radu Maier",
             "email" : "ariademur@webserv.co"
         }
     ],
-    "require" : {
-        "php" : "^7.1",
-        "webservco/framework" : "^9.79.0",
-        "webservco/api" : "^1"
-    },
-    "require-dev" : {
-        "squizlabs/php_codesniffer" : "^3",
-        "phpstan/phpstan" : "^1",
-        "phpunit/phpunit" : "~5"
-    },
-    "suggest" : {
-        "pds/skeleton" : "A standard filesystem skeleton suitable for all PHP packages.",
-        "squizlabs/php_codesniffer" : "Detects violations of a defined set of coding standards.",
-        "phpstan/phpstan" : "PHP Static Analysis Tool, when using PHP 7.x"
-    },
     "autoload" : {
         "psr-4" : {
             "ItaliaMultimedia\\" : "src/ItaliaMultimedia/",
             "Tests\\" : "tests/unit/ItaliaMultimedia/"
         }
     },
-    "scripts" : {
-        "test" : "vendor/bin/phpunit --colors=always",
-        "test:d" : "vendor/bin/phpunit --testdox",
-        "check:structure" : "vendor/bin/pds-skeleton validate .",
-        "check" : "vendor/bin/phpcs --standard=PSR12 --extensions=php examples src tests",
-        "s:1": "vendor/bin/phpstan analyse examples src tests --level=1 --ansi -c phpstan.neon",
-        "s:2": "vendor/bin/phpstan analyse examples src tests --level=2 --ansi -c phpstan.neon",
-        "s:3": "vendor/bin/phpstan analyse examples src tests --level=3 --ansi -c phpstan.neon",
-        "s:4": "vendor/bin/phpstan analyse examples src tests --level=4 --ansi -c phpstan.neon",
-        "s:5": "vendor/bin/phpstan analyse examples src tests --level=5 --ansi -c phpstan.neon",
-        "s:6": "vendor/bin/phpstan analyse examples src tests --level=6 --ansi -c phpstan.neon",
-        "s:7": "vendor/bin/phpstan analyse examples src tests --level=7 --ansi -c phpstan.neon",
-        "all": "composer s:5 && composer check && composer test"
-    }
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "description" : "GestPay REST API Implementation",
+    "homepage" : "https://github.com/italiamultimedia/gestpay",
+    "keywords" : [
+        "italiamultimedia",
+        "gestpay"
+    ],
+    "license" : "MIT",
+    "name" : "italiamultimedia/gestpay",
+    "require" : {
+        "php" : "^8.2"
+    },
+    "require-dev": {
+        "pds/skeleton": "^1",
+        "phan/phan": "^5",
+        "php-parallel-lint/php-parallel-lint": "^1",
+        "php-parallel-lint/php-console-highlighter": "^1",
+        "phpcompatibility/php-compatibility": "^9",
+        "phpmd/phpmd": "^2",
+        "phpstan/phpstan-strict-rules": "^1",
+        "phpstan/phpstan-phpunit": "^1",
+        "phpstan/phpstan" : "^1",
+        "phpunit/phpunit": "^10",
+        "slevomat/coding-standard": "^8",
+        "squizlabs/php_codesniffer" : "^3",
+        "vimeo/psalm": "^5",
+        "webservco/coding-standards": "^0"
+    },
+    "scripts": {
+        "check:lint": "vendor/bin/parallel-lint bin config public resources src tests",
+        "check:phan": "vendor/bin/phan --config-file vendor/webservco/coding-standards/phan/config.php",
+        "check:phpcs": "vendor/bin/phpcs --standard=.phpcs/php-coding-standard.xml --extensions=php -sp bin config public resources src tests",
+        "check:phpmd": "vendor/bin/phpmd bin,config,public,resources,src,tests json vendor/webservco/coding-standards/phpmd/phpmd-rule-set.xml",
+        "check:phpstan": "vendor/bin/phpstan analyse bin config public resources src tests --ansi -c vendor/webservco/coding-standards/phpstan/phpstan.neon --level=max",
+        "check:psalm": "vendor/bin/psalm --config=vendor/webservco/coding-standards/psalm/psalm.xml --no-diff",
+        "check:skeleton": "vendor/bin/pds-skeleton validate .",
+        "fix:phpcs": "vendor/bin/phpcbf --standard=.phpcs/php-coding-standard.xml --extensions=php -sp bin config public resources src tests",
+        "test" : "vendor/bin/phpunit --colors=always --configuration vendor/webservco/coding-standards/phpunit/phpunit-10.xml --display-deprecations --display-errors --display-incomplete --display-notices --display-skipped --display-warnings",
+        "test:dox" : "@test --testdox"
+    },
+    "type" : "library"
 }
