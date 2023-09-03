@@ -4,6 +4,8 @@ GestPay REST API Implementation.
 
 ## Notes
 * Supports only `apiKey` Authorization
+* `v0`: PHP 7
+* `v1`: PHP 8
 
 ## Implemented endpoints
 * `payment/create`
