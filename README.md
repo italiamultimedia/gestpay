@@ -1,6 +1,6 @@
 # italiamultimedia/gestpay
 
-GestPay REST API Implementation.
+Axerve / GestPay REST API Implementation.
 
 ## Notes
 
