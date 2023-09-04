@@ -1,11 +1,17 @@
 <?php
+
+declare(strict_types=1);
+
 namespace ItaliaMultimedia\GestPay\Exceptions;
 
-class GestPayException extends \WebServCo\Framework\Exceptions\ApplicationException
-{
-    const CODE = 0;
+use RuntimeException;
+use Throwable;
 
-    public function __construct($message, $code = self::CODE, \Exception $previous = null)
+final class GestPayException extends RuntimeException
+{
+    private const CODE = 0;
+
+    public function __construct(string $message, int $code = self::CODE, ?Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
