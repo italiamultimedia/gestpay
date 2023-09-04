@@ -16,7 +16,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-    "description" : "GestPay REST API Implementation",
+    "description" : "Axerve / GestPay REST API Implementation",
     "homepage" : "https://github.com/italiamultimedia/gestpay",
     "keywords" : [
         "italiamultimedia",
