@@ -35,4 +35,6 @@ composer require italiamultimedia/gestpay
 
 > See Gestpay documentation: [Using Lightbox solution](https://docs.gestpay.it/rest/getting-started/getting-started/#using-lightbox-solution)
 
+Known issue: PHPStan errors because environment is set statically for example.
+
 ---
