@@ -7,17 +7,19 @@ require $projectPath . 'vendor/autoload.php';
 
 use ItaliaMultimedia\GestPay\Contract\EnvironmentInterface;
 
-/* Edit */
-
+/** Edit start */
 $environment = EnvironmentInterface::SANDBOX;
 $shopLogin = '';
+/** Edit end */
 
 $axerveScriptUrl = sprintf(
     'https://%s/pagam/javascript/axerve.js',
     $environment === EnvironmentInterface::SANDBOX ? 'sandbox.gestpay.net' : 'ecomm.sella.it',
 );
-$paymentId = $_GET['paymentId'] ?? null;
-$paymentToken = $_GET['paymentToken'] ?? null;
+// @phpcs:disable SlevomatCodingStandard.Variables.DisallowSuperGlobalVariable.DisallowedSuperGlobalVariable
+$paymentId = $_GET['paymentId'] ?? '';
+$paymentToken = $_GET['paymentToken'] ?? '';
+// @phpcs:enable
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,7 +29,7 @@ $paymentToken = $_GET['paymentToken'] ?? null;
         <title>Gestpay</title>
     </head>
     <body>
-        <?php if (!empty($paymentId) && !empty($paymentToken)) { ?>
+        <?php if ($paymentId !== '' && $paymentToken !== '') { ?>
             <script src="<?=$axerveScriptUrl?>"></script>
             <script>
                 <?php if ($environment === EnvironmentInterface::SANDBOX) { ?>
