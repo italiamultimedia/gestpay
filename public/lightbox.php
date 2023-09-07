@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 $projectPath = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 require $projectPath . 'vendor/autoload.php';
 
@@ -11,10 +14,10 @@ $shopLogin = '';
 
 $axerveScriptUrl = sprintf(
     'https://%s/pagam/javascript/axerve.js',
-    EnvironmentInterface::SANDBOX == $environment ? 'sandbox.gestpay.net' : 'ecomm.sella.it'
+    $environment === EnvironmentInterface::SANDBOX ? 'sandbox.gestpay.net' : 'ecomm.sella.it',
 );
-$paymentId = isset($_GET['paymentId']) ? $_GET['paymentId'] : null;
-$paymentToken = isset($_GET['paymentToken']) ? $_GET['paymentToken'] : null;
+$paymentId = $_GET['paymentId'] ?? null;
+$paymentToken = $_GET['paymentToken'] ?? null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,7 +30,7 @@ $paymentToken = isset($_GET['paymentToken']) ? $_GET['paymentToken'] : null;
         <?php if (!empty($paymentId) && !empty($paymentToken)) { ?>
             <script src="<?=$axerveScriptUrl?>"></script>
             <script>
-                <?php if (EnvironmentInterface::SANDBOX == $environment) { ?>
+                <?php if ($environment === EnvironmentInterface::SANDBOX) { ?>
                     axerve.debug = true;
                 <?php } ?>
                 axerve.lightBox.shop = '<?=$shopLogin?>';
