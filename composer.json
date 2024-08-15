@@ -58,7 +58,7 @@
         "check:psalm": "vendor/bin/psalm --config=vendor/webservco/coding-standards/psalm/psalm.xml --no-diff",
         "check:skeleton": "vendor/bin/pds-skeleton validate .",
         "fix:phpcs": "vendor/bin/phpcbf --standard=.phpcs/php-coding-standard.xml --extensions=php -sp bin config public resources src tests",
-        "test" : "vendor/bin/phpunit --colors=always --configuration vendor/webservco/coding-standards/phpunit/phpunit-10.xml --display-deprecations --display-errors --display-incomplete --display-notices --display-skipped --display-warnings",
+        "test" : "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always --configuration vendor/webservco/coding-standards/phpunit/phpunit-10.xml --display-deprecations --display-errors --display-incomplete --display-notices --display-skipped --display-warnings",
         "test:dox" : "@test --testdox"
     },
     "type" : "library"
