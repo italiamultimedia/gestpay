@@ -54,7 +54,9 @@ final class ApiClientService implements ApiClientServiceInterface
      */
     public function getResponseBodyAsArray(ResponseInterface $response): array
     {
+        $response->getBody()->rewind();
         $body = $response->getBody()->getContents();
+        $response->getBody()->rewind();
         if ($body === '') {
             // Possible situation: the body contents were read elsewhere and the stream was not rewinded.
             throw new UnexpectedValueException('Response body is empty.');

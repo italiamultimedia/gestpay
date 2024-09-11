@@ -157,6 +157,8 @@ abstract class AbstractPaymentService implements AxervePaymentServiceInterface
 
     protected function logRequest(RequestInterface $request): bool
     {
+        $request->getBody()->rewind();
+
         $this->logger->debug(
             'Request debug (context).',
             [
@@ -167,7 +169,7 @@ abstract class AbstractPaymentService implements AxervePaymentServiceInterface
             ],
         );
 
-        // Important! Otherwise the stream body contents can not be retrieved later.
+        // Important! Otherwise, the stream body contents can not be retrieved later.
         $request->getBody()->rewind();
 
         return true;
@@ -175,6 +177,8 @@ abstract class AbstractPaymentService implements AxervePaymentServiceInterface
 
     protected function logResponse(ResponseInterface $response): bool
     {
+        $response->getBody()->rewind();
+
         $this->logger->debug(
             'Response debug (context).',
             [
@@ -185,7 +189,7 @@ abstract class AbstractPaymentService implements AxervePaymentServiceInterface
             ],
         );
 
-        // Important! Otherwise the stream body contents can not be retrieved later.
+        // Important! Otherwise, the stream body contents can not be retrieved later.
         $response->getBody()->rewind();
 
         return true;
